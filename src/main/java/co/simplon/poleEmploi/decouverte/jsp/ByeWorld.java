@@ -1,4 +1,4 @@
-package co.simplon.poleEmploi.decouverteServlets;
+package co.simplon.poleEmploi.decouverte.jsp;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -10,6 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 
 public class ByeWorld extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String message;
 
 	public void init() throws ServletException {

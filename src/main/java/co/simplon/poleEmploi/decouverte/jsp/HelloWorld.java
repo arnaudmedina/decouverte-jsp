@@ -1,8 +1,9 @@
-package co.simplon.poleEmploi.decouverteServlets;
+package co.simplon.poleEmploi.decouverte.jsp;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 
 public class HelloWorld extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4799039535301688065L;
 	private String messageGet;
 	private String messagePut;
 
@@ -18,36 +23,35 @@ public class HelloWorld extends HttpServlet {
 		messagePut = "Bonjour ";
 	}
 
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String message = messageGet;
 		String parametre = request.getParameter("nom");
-		if (parametre != null) {
+		if (! "".equals(parametre)) {
 			message += parametre;
 		} else {
 			message += "World";
 		}
 
-		response.setContentType("text/html");
+		RequestDispatcher requestDispatcher;
+		requestDispatcher = request.getRequestDispatcher("hello.jsp");
+		request.setAttribute("message", message); 
+		requestDispatcher.forward(request, response);
 
-		PrintWriter out = response.getWriter();
-		out.println("<h1>" + message + "</h1>");
 	}
 
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String message = messagePut;
 		String parametre = request.getParameter("nom");
-		if (parametre != null) {
+		if (! "".equals(parametre)) {
 			message += parametre;
 		} else {
 			message += "World";
 		}
 
-		response.setContentType("text/html");
-
-		PrintWriter out = response.getWriter();
-		out.println("<h1>" + message + "</h1>");
+		RequestDispatcher requestDispatcher;
+		requestDispatcher = request.getRequestDispatcher("WEB-INF/hello.jsp");
+		request.setAttribute("message", message); 
+		requestDispatcher.forward(request, response);
 	}
 
 	public void destroy() {
