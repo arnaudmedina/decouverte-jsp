@@ -51,10 +51,31 @@ public class HelloWorld extends HttpServlet {
 		RequestDispatcher requestDispatcher;
 		requestDispatcher = request.getRequestDispatcher("WEB-INF/hello.jsp");
 		request.setAttribute("message", message); 
+		
+		String monObjet = "message pour la JSP";
+		request.setAttribute("chaineMessage", monObjet);
 		requestDispatcher.forward(request, response);
 	}
 
 	public void destroy() {
 
 	}
+
+	public String getMessageGet() {
+		return messageGet;
+	}
+
+	public void setMessageGet(String messageGet) {
+		this.messageGet = messageGet;
+	}
+
+	public String getMessagePut() {
+		return messagePut;
+	}
+
+	public void setMessagePut(String messagePut) {
+		this.messagePut = messagePut;
+	}
+	
+	
 }
