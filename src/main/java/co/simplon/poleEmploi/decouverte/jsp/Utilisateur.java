@@ -40,7 +40,4 @@ public class Utilisateur {
 	public String toString() {
 		return "Utilisateur [" + nom + ", prenom=" + prenom + "]";
 	}
-
-	
-	
 }
